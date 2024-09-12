@@ -38,4 +38,6 @@ input {
   font-weight: 600;
   color: rgba(255, 255, 255, 0.87);
   background-color: transparent;
+  background-color: 1px transparent transparent;
+  outline: none;
 }

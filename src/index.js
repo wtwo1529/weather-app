@@ -8,10 +8,18 @@ async function fetchData(query) {
     let weatherData = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}?unitGroup=metric&key=EZR4NQ685DQQ5YBEPFV9SBFEP&contentType=json`
     );
-    let dataJSON = await weatherData.json();
-    console.log(dataJSON);
-    return dataJSON;
-  } catch (err) {}
+    console.log(weatherData);
+    if (weatherData.ok) {
+      let dataJSON = await weatherData.json();
+      console.log(dataJSON);
+      return dataJSON;
+    } else {
+      throw new Error(weatherData.status);
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
 }
 
 async function renderData(query) {
@@ -19,6 +27,9 @@ async function renderData(query) {
   console.log(searchQuery);
   let weatherData = await fetchData(searchQuery);
 
+  if (!weatherData) {
+    return;
+  }
   let date = getDate(weatherData.currentConditions.datetime);
   console.log(date);
 
