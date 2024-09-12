@@ -1,0 +1,47 @@
+.weather-stats {
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+  width: 90%;
+  border-radius: 10px;
+  max-height: 0;
+  padding: 0;
+  object-fit: contain;
+  overflow: hidden;
+  transition: max-height 5000ms ease-in-out;
+  background-color: rgba(255, 255, 255, 0.87);
+  z-index: 10;
+}
+.visible {
+  max-height: 100% !important;
+  height: 100% !important;
+  padding: 40px !important;
+  transition: max-height 350ms ease-in-out;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+}
+.current-conditions::before {
+  content: "";
+  background-image: url("./components/imgs/cloudy-svgrepo-com.svg");
+  background-size: 100px 100px;
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+.current-conditions {
+  display: flex;
+  flex-direction: column;
+  font-size: 26px;
+}
+#country-name {
+  font-size: 42px;
+}
+#current-temperature-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  font-size: 26px;
+}
