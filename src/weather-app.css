@@ -1,18 +1,21 @@
 .weather-stats {
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   border: 1px black solid;
-  width: 90%;
+  width: 55%;
   border-radius: 10px;
   max-height: 0;
   padding: 0;
   object-fit: contain;
   overflow: hidden;
   transition: max-height 5000ms ease-in-out;
-  background-color: rgba(255, 255, 255, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   z-index: 10;
+  border: none;
 }
 .visible {
+  min-width: 670px;
   max-height: 100% !important;
   height: 100% !important;
   padding: 40px !important;
@@ -34,14 +37,49 @@
 .current-conditions {
   display: flex;
   flex-direction: column;
-  font-size: 26px;
+  font-size: 3rem;
 }
 #country-name {
-  font-size: 42px;
+  font-size: 3.5rem;
 }
 #current-temperature-container {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  font-size: 26px;
+  font-size: 3rem;
+}
+.current-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  font-size: 3rem;
+}
+#current-temperature::after,
+#feels-like::after {
+  content: "°C";
+  display: inline-block;
+}
+#humidity::after {
+  content: "%";
+  display: inline-block;
+}
+.stats {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  gap: 40px;
+}
+#current-temperature::after {
+  margin-left: -30px;
+}
+#current-temperature {
+  font-size: 120px;
+  letter-spacing: 0.1px;
+}
+.other-stats {
+  display: flex;
+  flex-direction: column;
+}
+.current-container > p {
+  font-size: 35px;
 }

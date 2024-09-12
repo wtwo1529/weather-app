@@ -1,3 +1,5 @@
+import getDate from "./datetime";
+
 import "./style.css";
 import "./weather-app.css";
 
@@ -17,14 +19,26 @@ async function renderData(query) {
   console.log(searchQuery);
   let weatherData = await fetchData(searchQuery);
 
+  let date = getDate(weatherData.currentConditions.datetime);
+  console.log(date);
+
   let countryName = document.querySelector("#country-name");
   countryName.textContent = weatherData.resolvedAddress;
+
+  let currentStatus = document.querySelector("#current-status");
+  currentStatus.textContent = weatherData.currentConditions.conditions;
 
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.textContent = weatherData.currentConditions.temp;
 
-  let currentStatus = document.querySelector("#current-status");
-  currentStatus.textContent = weatherData.currentConditions.conditions;
+  let feelsLike = document.querySelector("#feels-like");
+  feelsLike.textContent = weatherData.currentConditions.feelslike;
+
+  let humidity = document.querySelector("#humidity");
+  humidity.textContent = weatherData.currentConditions.humidity;
+
+  let windSpeed = document.querySelector("#wind-speed");
+  windSpeed.textContent = weatherData.currentConditions.windspeed;
 
   let weatherStats = document.querySelector(".weather-stats");
   weatherStats.classList.add("visible");
